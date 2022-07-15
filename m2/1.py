@@ -1,0 +1,16 @@
+url = "bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar"
+indice_interrogacao = url.find("?")
+url_base = url[:indice_interrogacao]
+parametros = url[indice_interrogacao + 1:]
+
+parametro_busca = "quantidade"
+indice_parametro = parametros.find(parametro_busca)
+indice_valor = indice_parametro + len(parametro_busca) + 1
+
+indice_e_comercial = parametros.find("&", indice_valor)
+if indice_e_comercial == -1:
+    valor = parametros[indice_valor:]
+else:
+    valor = parametros[indice_valor:indice_e_comercial]
+
+print(valor)
